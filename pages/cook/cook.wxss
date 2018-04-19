@@ -1,0 +1,34 @@
+/* pages/cook.wxss */
+@import "../news/news.wxss";
+.food{
+  padding: 40rpx;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.foot-item{
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+  width:100%;
+  border-bottom: 1px solid #2a579a;
+}
+.search{
+  height:80rpx;
+  width: 90%;
+  margin: 0 auto;
+  padding-left: 20rpx;
+  border-radius: 10px;
+  border: 1px solid #2a579a;
+}
+.placeholder{
+  font-size: 32rpx;
+  color:#ccc;
+}
+.food-search{
+  padding-bottom: 0;
+}

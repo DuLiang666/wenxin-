@@ -1,0 +1,17 @@
+
+<view class='food food-search'>
+    <input class='search' placeholder='请输入查询菜名' focus bindinput='foodtap' placeholder-class='placeholder'></input>
+</view>
+<view class='food'>
+<block wx:for="{{foodData}}">
+  <view class="foot-item">
+      <view>
+          <image class="icon-image" src="{{item.albums}}"></image>
+      </view>
+      <view class="news-text">
+          <view class="news-Title">{{item.title}}</view>
+          <text class="">{{item.tags}}</text>
+      </view>
+  </view>
+  </block>
+</view>
