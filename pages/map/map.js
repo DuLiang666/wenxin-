@@ -112,7 +112,7 @@ Page({
     // 发起POI检索请求 
     this.data.bitmap.search({
       "query": this.data.searchMethod,
-      location: "",
+      location: app.globalData.selectlat + "," + app.globalData.selectlng,
       fail: this.data.fail,
       success: this.data.success,
       // 此处需要在相应路径放置图片文件 

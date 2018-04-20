@@ -128,7 +128,7 @@ class BMapWX {
         };
         let locationcomplete = function (result) {
         };
-        if (param["location"] == "") {
+        if (param["location"] == ",") {
             that.getWXLocation(type, locationsuccess, locationfail, locationcomplete);
         } else {
             let longitude = param.location.split(',')[1];

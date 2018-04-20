@@ -115,6 +115,8 @@ Page({
   reGetLocation: function () {
     app.globalData.defaultCity = this.data.city
     app.globalData.defaultCounty = this.data.county
+    app.globalData.selectlat = ""
+    app.globalData.selectlng = ""
     //返回首页
     wx.switchTab({
       url: '../index/index'
