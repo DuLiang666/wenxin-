@@ -45,6 +45,8 @@ App({
   globalData: {
     defaultCity: '',
     defaultCounty: '',
+    selectlat:'',
+    selectlng:'',
     weatherData: '',
     loginStatus:true,
     air: '',

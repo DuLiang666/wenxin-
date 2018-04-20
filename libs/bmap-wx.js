@@ -32,6 +32,7 @@ class BMapWX {
         success = success || function () {};
         fail = fail || function () {};
         complete = complete || function () {};
+       
         wx.getLocation({
             type: type,
             success: success,
@@ -75,6 +76,7 @@ class BMapWX {
         };
         let type = 'gcj02';
         let locationsuccess = function (result) {
+         
             searchparam["location"] = result["latitude"] + ',' + result["longitude"];
             wx.request({
                 url: 'https://api.map.baidu.com/place/v2/search',
@@ -126,7 +128,7 @@ class BMapWX {
         };
         let locationcomplete = function (result) {
         };
-        if (!param["location"]) {
+        if (param["location"] == "") {
             that.getWXLocation(type, locationsuccess, locationfail, locationcomplete);
         } else {
             let longitude = param.location.split(',')[1];

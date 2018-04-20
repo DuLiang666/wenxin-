@@ -31,7 +31,7 @@
       <view wx:if="{{condition}}" class="hotcity-common">选择区县</view>
       <view wx:if="{{condition}}" class="county">
         <block class="hotCity" wx:for-items="{{countyList}}" wx:key="id">
-          <view class="weui-grid" style="margin-right: 16rpx;" data-code="{{item.id}}" data-city="{{item.fullname}}" bindtap="bindCounty">
+          <view class="weui-grid" style="margin-right: 16rpx;" data-code="{{item.id}}" data-city="{{item.fullname}}" data-lat="{{item.location.lat}}" data-lng="{{item.location.lng}}"  bindtap="bindCounty">
             <view class="weui-grid__label">{{item.fullname}}</view>
           </view>
         </block>

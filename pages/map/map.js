@@ -1,5 +1,6 @@
 // 引用百度地图微信小程序JSAPI模块 
 var bmap = require('../../libs/bmap-wx.js');
+var app = getApp();
 var wxMarkerData = [];
 Page({
   data: {
@@ -18,7 +19,7 @@ Page({
     var that = this;
     // 新建百度地图对象 
     var BMap = new bmap.BMapWX({
-      ak: 'heTp7eyEK8d6cWplVB2VpXcmZywnhQfo'
+      ak: '0luiTcOd8VPqBNkv7K4I3GvEdGCZdqdz'
     });
     that.setData({
       bitmap: BMap
@@ -33,10 +34,10 @@ Page({
         fail: fail,
       });
       that.setData({
-        latitude: wxMarkerData[0].latitude
+        latitude: app.globalData.selectlat == "" ? wxMarkerData[0].latitude : app.globalData.selectlat
       });
       that.setData({
-        longitude: wxMarkerData[0].longitude
+        longitude: app.globalData.selectlat == "" ? wxMarkerData[0].longitude : app.globalData.selectlng
       });
     }
     that.setData({
@@ -111,6 +112,7 @@ Page({
     // 发起POI检索请求 
     this.data.bitmap.search({
       "query": this.data.searchMethod,
+      location: "",
       fail: this.data.fail,
       success: this.data.success,
       // 此处需要在相应路径放置图片文件 

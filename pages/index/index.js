@@ -87,7 +87,6 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-       console.log(res)
         //当前的经度和纬度
         let latitude = res.latitude
         let longitude = res.longitude

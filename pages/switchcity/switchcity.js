@@ -1,5 +1,5 @@
 const city = require('../../utils/util.js');
-const appInstance = getApp();
+const app = getApp();
 Page({
 
   data: {
@@ -22,6 +22,7 @@ Page({
   },
   //选择城市
   bindCity: function (e) {
+   
     this.setData({
       condition: true,  //选择区县修改为true
       city: e.currentTarget.dataset.city,
@@ -30,13 +31,15 @@ Page({
       completeList: [],
     })
     this.selectCounty() //获取当前城市的区名称
-    appInstance.globalData.defaultCity = this.data.city
-    appInstance.globalData.defaultCounty = ''
+    app.globalData.defaultCity = this.data.city
+    app.globalData.defaultCounty = ''
   },
   bindCounty: function (e)  //设置当前区域
   {
     this.setData({ county: e.currentTarget.dataset.city })
-    appInstance.globalData.defaultCounty = this.data.county
+    app.globalData.defaultCounty = this.data.county
+    app.globalData.selectlat = e.currentTarget.dataset.lat
+    app.globalData.selectlng = e.currentTarget.dataset.lng
     wx.switchTab({
       url: '../index/index' 
     })
@@ -80,8 +83,8 @@ Page({
         let latitude = res.latitude
         let longitude = res.longitude
         wx.request({
-          url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${appInstance.globalData.tencentMapKey}`,
-          success: res => {
+          url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${latitude},${longitude}&key=${app.globalData.tencentMapKey}`,
+          success: res => {          
             that.setData({
               city: res.data.result.ad_info.city,
               currentCityCode: res.data.result.ad_info.adcode,
@@ -97,7 +100,7 @@ Page({
     let code = this.data.currentCityCode
     const that = this;
     wx.request({
-      url: `https://apis.map.qq.com/ws/district/v1/getchildren?&id=${code}&key=${appInstance.globalData.tencentMapKey}`,
+      url: `https://apis.map.qq.com/ws/district/v1/getchildren?&id=${code}&key=${app.globalData.tencentMapKey}`,
       success: function (res) {
         that.setData({
           countyList: res.data.result[0],
@@ -110,8 +113,8 @@ Page({
   },
   //重新定位城市
   reGetLocation: function () {
-    appInstance.globalData.defaultCity = this.data.city
-    appInstance.globalData.defaultCounty = this.data.county
+    app.globalData.defaultCity = this.data.city
+    app.globalData.defaultCounty = this.data.county
     //返回首页
     wx.switchTab({
       url: '../index/index'
